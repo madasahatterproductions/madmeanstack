@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+    //- Let's include all the dependencies. They are
+    //- kept in a separate file to make gulp easier.
+    //- build:css(app/assets) /stylesheets/style.min.css
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Ubuntu:400,300italic,300,400italic,500,500italic,700,700italic&subset=latin,greek,cyrillic-ext,latin-ext,greek-ext,cyrillic')
+    link(rel='stylesheet', href='/bower/allmighty-autocomplete/style/autocomplete.css')
+    link(rel='stylesheet', href='/css/app.css')
+    //- endbuild
+
+    //- build:js(app/assets) /javascripts/app.min.js
+    script(src='/bower/angular/angular.js')
+    script(src='/bower/angular-animate/angular-animate.js')
+    script(src='/bower/angular-cookies/angular-cookies.js')
+    script(src='/bower/angular-bootstrap/ui-bootstrap.js')
+    script(src='/bower/angular-ui-router/release/angular-ui-router.js')
+    script(src='/bower/ng-file-upload/ng-file-upload-all.js')
+    script(src='/bower/allmighty-autocomplete/script/autocomplete.js')
+    script(src="/bower/ngInfiniteScroll/build/ng-infinite-scroll.js")
+    script(src='/js/app.js')
+    //- endbuild
+
+
+  body(ng-app='app')
+    div(class="off-canvas-wrap", data-off-canvas)
+      div.inner-wrap
+        nav.navbar.navbar-default
+          div.container-fluid
+            div.navbar-header
+              button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1", aria-expanded="false")
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href="#") MadMeanStack
+        div.container
+          div.row
+            div.col-xs-12
+              div.jumbotron
+                h1 Fear not!
+                  br
+                  small The Mad Mean Stack is here!
+
+        div.hide-for-large-up(style="padding-top:48px;")
+        div.ui-view-container
+          //- This is the ui view that is connected to the ui-router.
+          //- This is where all the content is rendered.
+          div.ourvui(ui-view)
+      
+      //- Need the back to top link!
+      a.backtotop(href="#", title="Back to top")
+      //- Exit the offcanvas menu button.
+      a.exit-off-canvas
+      
+      //- Add in the footer
+      footer.super-footer.row.text-center(ng-controller='UserCtrl')
+        div.small-12.columns

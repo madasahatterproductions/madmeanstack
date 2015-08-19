@@ -1,0 +1,78 @@
+<div class="content row contain">
+  <div class="content-inner">
+    <div class="small-12 columns">
+      <div>{{ error }}</div>
+      <form method="post">
+        <h1>User Management</h1>
+        <table>
+          <thead>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th class="text/center">Role</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in userSvc.users">
+              <td>
+                <input type="text" ng-model="user.firstName"/>
+              </td>
+              <td>
+                <input type="text" ng-model="user.lastName"/>
+              </td>
+              <td>
+                <input type="email" ng-model="user.email"/>
+              </td>
+              <td>
+                <select ng-options="r for r in userSvc.roles" ng-model="user.role"></select>
+              </td>
+              <td style="width:60px;">
+                <a class="button alert" ng-click="remove(user)">X</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a ng-click="userSvc.update()" class="button primary">Save changes</a>
+        <hr />
+        <h3>Create user</h3>
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <div class="row form-item">
+              <label class="small-12 medium-3 columns">First name:</label>
+              <div class="small-12 medium-9 columns">
+                <input type="text" ng-model="newUser.firstName"/>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 medium-6 columns">
+            <div class="row form-item">
+              <label class="small-12 medium-3 columns">Last name:</label>
+              <div class="small-12 medium-9 columns">
+                <input type="text" ng-model="newUser.lastName"/>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 medium-6 columns">
+            <div class="row">
+              <label class="small-12 medium-3 columns">Email:</label>
+              <div class="small-12 medium-9 columns">
+                <input type="text" ng-model="newUser.email"/>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 medium-6 columns">
+            <div class="row form-item">
+              <label class="small-12 medium-3 columns">Password:</label>
+              <div class="small-12 medium-9 columns">
+                <input type="password" ng-model="newUser.password"/>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 columns">
+            <a ng-click="createUser()" class="button primary">Create user</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
